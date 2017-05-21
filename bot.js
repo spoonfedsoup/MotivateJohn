@@ -11,5 +11,11 @@ var stream = t.stream('statuses/filter', {track:'#philly'})
 console.log("Listening");
 stream.on('tweet',function(tweet){
   console.log(tweet);
-  fs.appendFile("tweets",JSON.stringify(tweet),function(err){});
+  fs.appendFile("tweets",stringit(tweet),function(err){});
  });
+
+function stringit(tweet){
+  var str = JSON.stringify(tweet);
+  str = str + "\n";
+  return str;
+}
